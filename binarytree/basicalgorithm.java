@@ -13,7 +13,7 @@ class Node {
     }
 }
 
-class Solution {
+class BinaryTree {
   //BFS using Queue
   public static void levelOrder(Node root) {
         Queue q = new LinkedList();
