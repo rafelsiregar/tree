@@ -115,7 +115,7 @@ class AVLTree {
         return node; 
     } 
   
-    // A utility function to print preorder traversal 
+    // A utility function to print preorder, inorder, or postorder traversal 
     // of the tree. 
     // The function also prints height of every node 
     public static void preOrder(Node node) { 
@@ -125,6 +125,23 @@ class AVLTree {
             preOrder(node.right); 
         } 
     } 
+    
+     public static void inOrder(Node node) { 
+        if (node != null) { 
+            inOrder(node.left); 
+            System.out.print(node.key + " "); 
+            inOrder(node.right); 
+        } 
+    } 
+    
+    public static void postOrder(Node node) { 
+        if (node != null) { 
+            postOrder(node.left); 
+            postOrder(node.right); 
+            System.out.print(node.key + " "); 
+        } 
+    } 
+    
   
     public static void main(String[] args) { 
         Scanner scan = new Scanner(System.in);
