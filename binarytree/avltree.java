@@ -11,8 +11,6 @@ class Node {
   
 class AVLTree { 
   
-    Node root; 
-  
     // A utility function to get the height of the tree 
     public static int height(Node N) { 
         if (N == null) 
@@ -129,24 +127,15 @@ class AVLTree {
     } 
   
     public static void main(String[] args) { 
+        Scanner scan = new Scanner(System.in);
+        int t = scan.nextInt();
         Node root = null;
-        root = insert(root, 10); 
-        root = insert(root, 20); 
-        root = insert(root, 30); 
-        root = insert(root, 40); 
-        root = insert(root, 50); 
-        root = insert(root, 25); 
-  
-        /* The constructed AVL Tree would be 
-             30 
-            /  \ 
-          20   40 
-         /  \     \ 
-        10  25    50 
-        */
-        System.out.println("Preorder traversal" + 
-                        " of constructed tree is : "); 
-        preOrder(root); 
+        while(t-- > 0) {
+            int data = scan.nextInt();
+            root = insert(root, data);
+        }
+        scan.close();
+        preOrder(root);
     } 
 } 
 // This code has been contributed by Mayank Jaiswal 
