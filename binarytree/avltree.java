@@ -14,7 +14,7 @@ class AVLTree {
     Node root; 
   
     // A utility function to get the height of the tree 
-    int height(Node N) { 
+    public static int height(Node N) { 
         if (N == null) 
             return 0; 
   
@@ -22,13 +22,13 @@ class AVLTree {
     } 
   
     // A utility function to get maximum of two integers 
-    int max(int a, int b) { 
+    public static int max(int a, int b) { 
         return (a > b) ? a : b; 
     } 
   
     // A utility function to right rotate subtree rooted with y 
     // See the diagram given above. 
-    Node rightRotate(Node y) { 
+    public static Node rightRotate(Node y) { 
         Node x = y.left; 
         Node T2 = x.right; 
   
@@ -46,7 +46,7 @@ class AVLTree {
   
     // A utility function to left rotate subtree rooted with x 
     // See the diagram given above. 
-    Node leftRotate(Node x) { 
+    public static Node leftRotate(Node x) { 
         Node y = x.right; 
         Node T2 = y.left; 
   
@@ -63,14 +63,14 @@ class AVLTree {
     } 
   
     // Get Balance factor of node N 
-    int getBalance(Node N) { 
+    public static int getBalance(Node N) { 
         if (N == null) 
             return 0; 
   
         return height(N.left) - height(N.right); 
     } 
   
-    Node insert(Node node, int key) { 
+    public static Node insert(Node node, int key) { 
   
         /* 1.  Perform the normal BST insertion */
         if (node == null) 
@@ -120,7 +120,7 @@ class AVLTree {
     // A utility function to print preorder traversal 
     // of the tree. 
     // The function also prints height of every node 
-    void preOrder(Node node) { 
+    public static void preOrder(Node node) { 
         if (node != null) { 
             System.out.print(node.key + " "); 
             preOrder(node.left); 
@@ -129,15 +129,13 @@ class AVLTree {
     } 
   
     public static void main(String[] args) { 
-        AVLTree tree = new AVLTree(); 
-  
-        /* Constructing tree given in the above figure */
-        tree.root = tree.insert(tree.root, 10); 
-        tree.root = tree.insert(tree.root, 20); 
-        tree.root = tree.insert(tree.root, 30); 
-        tree.root = tree.insert(tree.root, 40); 
-        tree.root = tree.insert(tree.root, 50); 
-        tree.root = tree.insert(tree.root, 25); 
+        Node root = null;
+        root = insert(root, 10); 
+        root = insert(root, 20); 
+        root = insert(root, 30); 
+        root = insert(root, 40); 
+        root = insert(root, 50); 
+        root = insert(root, 25); 
   
         /* The constructed AVL Tree would be 
              30 
@@ -148,7 +146,7 @@ class AVLTree {
         */
         System.out.println("Preorder traversal" + 
                         " of constructed tree is : "); 
-        tree.preOrder(tree.root); 
+        preOrder(root); 
     } 
 } 
 // This code has been contributed by Mayank Jaiswal 
