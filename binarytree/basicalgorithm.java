@@ -49,6 +49,94 @@ class Solution {
             System.out.print(root.data+" ");
         }
     }
+	
+ //DFS using Stack
+public static void preorder_using_stack(Node root)
+	{
+		// return if tree is empty
+		if (root == null) {
+			return;
+		}
+
+		// create an empty stack and push root node
+		Stack<Node> stack = new Stack();
+		stack.push(root);
+
+		// run till stack is not empty
+		while (!stack.empty())
+		{
+			// pop a node from the stack and print it
+			Node curr = stack.pop();
+
+			System.out.print(curr.data + " ");
+
+			// push right child of popped node to the stack
+			if (curr.right != null) {
+				stack.push(curr.right);
+			}
+
+			// push left child of popped node to the stack
+			if (curr.left != null) {
+				stack.push(curr.left);
+			}
+
+			// important note - right child is pushed first so that left child
+			// is processed first (FIFO order)
+		}
+	}
+	
+
+public static void inorder_using_stack(Node root) { 
+       // create an empty stack
+	Stack<Node> stack = new Stack();
+	// start from root node (set current node to root node)
+	Node curr = root;
+	// if current node is null and stack is also empty, we're done
+	while (!stack.empty() || curr != null){
+	// if current node is not null, push it to the stack (defer it)
+	// and move to its left child
+	if (curr != null){
+		stack.push(curr);
+		curr = curr.left;
+	}else{
+	/* else if current node is null, we pop an element from the stack,
+	 print it and finally set current node to its right child*/
+		curr = stack.pop();
+		System.out.print(curr.data + " ");
+		curr = curr.right;
+		}
+	}
+    } 
+	
+public static void postorder_using_stack(Node root){
+	// create an empty stack and push root node
+	Stack<Node> stack = new Stack();
+	stack.push(root);
+
+	// create another stack to store post-order traversal
+	Stack<Integer> out = new Stack();
+
+	// run till stack is not empty
+	while (!stack.empty()){
+	// we pop a node from the stack and push the data to output stack
+	Node curr = stack.pop();
+	out.push(curr.data);
+
+	// push left and right child of popped node to the stack
+	if (curr.left != null) {
+		stack.push(curr.left);
+	}
+
+	if (curr.right != null) {
+		stack.push(curr.right);
+	}
+	}
+
+	// print post-order traversal
+	while (!out.empty()) {
+		System.out.print(out.pop() + " ");
+	}
+}
     
     //Height of Binary Tree using Recursion
     public static int height(Node root) {
