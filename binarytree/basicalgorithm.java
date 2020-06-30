@@ -162,7 +162,7 @@ public static Node search(Node root, int data)
         return root; 
   
     // val is greater than root's key 
-    if (root.key > key) 
+    if (root.data > data) 
         return search(root.left, data); 
   
     // val is less than root's key 
@@ -190,7 +190,7 @@ public static Node delete(Node root, int data) {
   
             // node with two children: Get the inorder successor (smallest 
             // in the right subtree) 
-            root.key = minValue(root.right); 
+            root.data = minValue(root.right); 
   
             // Delete the inorder successor 
             root.right = delete(root.right, root.data); 
