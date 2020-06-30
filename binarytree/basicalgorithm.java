@@ -51,39 +51,31 @@ class Solution {
     }
 	
  //DFS using Stack
-public static void preorder_using_stack(Node root)
-	{
-		// return if tree is empty
-		if (root == null) {
-			return;
+public static void preorder_using_stack(Node root) {
+	// return if tree is empty
+	if (root == null) {
+		return;
+	}
+
+	// create an empty stack and push root node
+	Stack<Node> stack = new Stack();
+	stack.push(root);
+
+	// run till stack is not empty
+	while (!stack.empty()) {
+		// pop a node from the stack and print it
+		Node curr = stack.pop();
+		System.out.print(curr.data + " ");
+		// push right child of popped node to the stack
+		if (curr.right != null) {
+			stack.push(curr.right);
 		}
-
-		// create an empty stack and push root node
-		Stack<Node> stack = new Stack();
-		stack.push(root);
-
-		// run till stack is not empty
-		while (!stack.empty())
-		{
-			// pop a node from the stack and print it
-			Node curr = stack.pop();
-
-			System.out.print(curr.data + " ");
-
-			// push right child of popped node to the stack
-			if (curr.right != null) {
-				stack.push(curr.right);
-			}
-
-			// push left child of popped node to the stack
-			if (curr.left != null) {
-				stack.push(curr.left);
-			}
-
-			// important note - right child is pushed first so that left child
-			// is processed first (FIFO order)
+		// push left child of popped node to the stack
+		if (curr.left != null) {
+			stack.push(curr.left);
 		}
 	}
+}
 	
 
 public static void inorder_using_stack(Node root) { 
@@ -154,7 +146,7 @@ public static void postorder_using_stack(Node root){
         else if(data>root.data) root.right= insert(root.right, data);
         return root;
     }
-    
+//Search the element in the BST
 public static Node search(Node root, int data) 
 { 
     // Base Cases: root is null or key is present at root 
@@ -168,7 +160,7 @@ public static Node search(Node root, int data)
     // val is less than root's key 
     return search(root.right, data); 
 } 
-
+//Delete element in the BST
 public static Node delete(Node root, int data) { 
         /* Base Case: If the tree is empty */
         if (root == null)  return root; 
